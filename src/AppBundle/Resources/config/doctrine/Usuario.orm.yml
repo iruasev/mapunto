@@ -1,0 +1,143 @@
+AppBundle\Entity\Usuario:
+    type: entity
+    table: usuario
+    indexes:
+        USUARIO_LUGAR_IDX:
+            columns:
+                - lugar_id
+    uniqueConstraints:
+        USERNAME_CAN_UNIQ:
+            columns:
+                - username_canonical
+        EMAIL_CAN_UNIQ:
+            columns:
+                - email_canonical
+        USERNAME_UNIQ:
+            columns:
+                - username
+        EMAIL_UNIQ:
+            columns:
+                - email
+        CONF_TOKEN_UNIQ:
+            columns:
+                - confirmation_token
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: false
+            length: 180
+            options:
+                fixed: false
+        usernameCanonical:
+            type: string
+            nullable: false
+            length: 180
+            options:
+                fixed: false
+            column: username_canonical
+        email:
+            type: string
+            nullable: false
+            length: 180
+            options:
+                fixed: false
+        emailCanonical:
+            type: string
+            nullable: false
+            length: 180
+            options:
+                fixed: false
+            column: email_canonical
+        active:
+            type: boolean
+            nullable: false
+        salt:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        password:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        lastLogin:
+            type: datetime
+            nullable: true
+            column: last_login
+        confirmationToken:
+            type: string
+            nullable: true
+            length: 180
+            options:
+                fixed: false
+            column: confirmation_token
+        passwordRequestedAt:
+            type: datetime
+            nullable: true
+            column: password_requested_at
+        age:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        birthDate:
+            type: date
+            nullable: false
+            column: birth_date
+        identifier:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+        name:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+        phone:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+        surname:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+    manyToOne:
+        lugar:
+            targetEntity: Lugar
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                lugar_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: friend
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

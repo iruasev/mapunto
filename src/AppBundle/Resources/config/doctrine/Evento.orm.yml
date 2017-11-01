@@ -1,0 +1,63 @@
+AppBundle\Entity\Evento:
+    type: entity
+    table: evento
+    indexes:
+        EVENTO_LUGAR_IDX:
+            columns:
+                - lugar_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+        capacity:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        eventDate:
+            type: datetime
+            nullable: false
+            column: event_date
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+        deadline:
+            type: datetime
+            nullable: false
+        difficulty:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+        description:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+    manyToOne:
+        lugar:
+            targetEntity: Lugar
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                lugar_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

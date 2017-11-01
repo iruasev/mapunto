@@ -1,0 +1,74 @@
+AppBundle\Entity\Lugar:
+    type: entity
+    table: lugar
+    indexes:
+        FK_TIPO_LUGAR_IDX:
+            columns:
+                - tipo_lugar_id
+        FK_LUGAR_PAIS_IDX:
+            columns:
+                - pais_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        address1:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: address_1
+        address2:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: address_2
+        latitude:
+            type: string
+            nullable: false
+            length: 250
+            options:
+                fixed: false
+        longitude:
+            type: string
+            nullable: false
+            length: 250
+            options:
+                fixed: false
+    manyToOne:
+        tipoLugar:
+            targetEntity: TipoLugar
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_lugar_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        pais:
+            targetEntity: Pais
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                pais_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

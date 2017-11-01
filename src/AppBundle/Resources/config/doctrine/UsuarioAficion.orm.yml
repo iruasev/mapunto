@@ -1,0 +1,51 @@
+AppBundle\Entity\UsuarioAficion:
+    type: entity
+    table: usuario_aficion
+    indexes:
+        USUARIO_IDX:
+            columns:
+                - usuario_id
+        USUARIO_AFICION_IDX:
+            columns:
+                - aficion_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        createdAt:
+            type: date
+            nullable: false
+            column: created_at
+        level:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    manyToOne:
+        aficion:
+            targetEntity: Aficion
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                aficion_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

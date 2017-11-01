@@ -1,0 +1,46 @@
+AppBundle\Entity\EventoDocumento:
+    type: entity
+    table: evento_documento
+    indexes:
+        DE_EVENTO_IDX:
+            columns:
+                - evento_id
+        DE_DOCUMENTO_IDX:
+            columns:
+                - documento_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+    manyToOne:
+        documento:
+            targetEntity: Documento
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                documento_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        evento:
+            targetEntity: Evento
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                evento_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
