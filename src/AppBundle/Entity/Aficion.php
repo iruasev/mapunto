@@ -7,7 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Aficion
  *
- * @ORM\Table(name="aficion", uniqueConstraints={@ORM\UniqueConstraint(name="AFICION_NAME_UNIQ", columns={"name"})}, indexes={@ORM\Index(name="AFICION_CATEGORIA_IDX", columns={"categoria_id"})})
+ * @ORM\Table(
+ *     name="aficion",
+ *     uniqueConstraints={@ORM\UniqueConstraint(name="AFICION_NAME_UNIQ", columns={"name"})},
+ *     indexes={@ORM\Index(name="AFICION_CATEGORIA_IDX", columns={"categoria_id"})}
+ *     )
  * @ORM\Entity
  */
 class Aficion
@@ -17,7 +21,7 @@ class Aficion
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
