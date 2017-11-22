@@ -10,7 +10,7 @@ parameters:
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: ~
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -69,3 +69,30 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+# FOSRestBundle configuration
+fos_rest:
+    view:
+        view_response_listener: force
+        formats:
+            json: true
+    format_listener:
+        rules:
+            - { path: ^/api, priorities: [ json ], fallback_format: json, prefer_extension: true }
+            - { path: ^/, priorities: ['html', '*/*'], fallback_format: html, prefer_extension: true }
+    param_fetcher_listener: force
+    routing_loader:
+        default_format: json
+        include_format: false
+    exception:
+        enabled: true
+        exception_controller: 'BCA\CoreBundle\Controller\IMSExceptionController::showAction'
+
+# FOSUserBundle configuration
+fos_user:
+    db_driver: orm
+    firewall_name: api
+    user_class: AppBundle\Entity\Usuario
+    from_email:
+        address:        %mailer_user%
+        sender_name:    %mailer_user%
