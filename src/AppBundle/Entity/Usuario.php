@@ -10,7 +10,15 @@ use Doctrine\Common\Collections\Collection;
 /**
  * Usuario
  *
- * @ORM\Table(name="usuario", uniqueConstraints={@ORM\UniqueConstraint(name="USERNAME_CAN_UNIQ", columns={"username_canonical"}), @ORM\UniqueConstraint(name="EMAIL_CAN_UNIQ", columns={"email_canonical"}), @ORM\UniqueConstraint(name="USERNAME_UNIQ", columns={"username"}), @ORM\UniqueConstraint(name="EMAIL_UNIQ", columns={"email"}), @ORM\UniqueConstraint(name="CONF_TOKEN_UNIQ", columns={"confirmation_token"})}, indexes={@ORM\Index(name="USUARIO_LUGAR_IDX", columns={"lugar_id"})})
+ * @ORM\Table(
+ *     name="usuario",
+ *     uniqueConstraints={
+ *      @ORM\UniqueConstraint(name="USERNAME_CAN_UNIQ", columns={"username_canonical"}),
+ *      @ORM\UniqueConstraint(name="EMAIL_CAN_UNIQ", columns={"email_canonical"}),
+ *      @ORM\UniqueConstraint(name="USERNAME_UNIQ", columns={"username"}),
+ *      @ORM\UniqueConstraint(name="EMAIL_UNIQ", columns={"email"}),
+ *      @ORM\UniqueConstraint(name="CONF_TOKEN_UNIQ", columns={"confirmation_token"})},
+ *     indexes={@ORM\Index(name="USUARIO_LUGAR_IDX", columns={"lugar_id"})})
  * @ORM\Entity
  */
 class Usuario extends User

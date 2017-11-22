@@ -31,62 +31,6 @@ AppBundle\Entity\Usuario:
             generator:
                 strategy: IDENTITY
     fields:
-        username:
-            type: string
-            nullable: false
-            length: 180
-            options:
-                fixed: false
-        usernameCanonical:
-            type: string
-            nullable: false
-            length: 180
-            options:
-                fixed: false
-            column: username_canonical
-        email:
-            type: string
-            nullable: false
-            length: 180
-            options:
-                fixed: false
-        emailCanonical:
-            type: string
-            nullable: false
-            length: 180
-            options:
-                fixed: false
-            column: email_canonical
-        active:
-            type: boolean
-            nullable: false
-        salt:
-            type: string
-            nullable: true
-            length: 255
-            options:
-                fixed: false
-        password:
-            type: string
-            nullable: false
-            length: 255
-            options:
-                fixed: false
-        lastLogin:
-            type: datetime
-            nullable: true
-            column: last_login
-        confirmationToken:
-            type: string
-            nullable: true
-            length: 180
-            options:
-                fixed: false
-            column: confirmation_token
-        passwordRequestedAt:
-            type: datetime
-            nullable: true
-            column: password_requested_at
         age:
             type: integer
             nullable: true
