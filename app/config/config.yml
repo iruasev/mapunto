@@ -96,3 +96,9 @@ fos_user:
     from_email:
         address:        %mailer_user%
         sender_name:    %mailer_user%
+
+# JMS Serializer configuration
+jms_serializer:
+    metadata:
+        directories:
+            - { path: %kernel.root_dir%/Resources/serializer/FOS, namespace_prefix: 'FOS\UserBundle' }
