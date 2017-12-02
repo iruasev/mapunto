@@ -7,7 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Rol
  *
- * @ORM\Table(name="rol", uniqueConstraints={@ORM\UniqueConstraint(name="ROL_NAME_UNIQUE", columns={"name"})})
+ * @ORM\Table(
+ *     name="rol",
+ *     uniqueConstraints={@ORM\UniqueConstraint(name="ROL_NAME_UNIQUE", columns={"name"})}
+ * )
  * @ORM\Entity
  */
 class Rol
@@ -15,7 +18,7 @@ class Rol
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -27,8 +30,6 @@ class Rol
      * @ORM\Column(name="name", type="string", length=50, nullable=false)
      */
     private $name;
-
-
 
     /**
      * Get id

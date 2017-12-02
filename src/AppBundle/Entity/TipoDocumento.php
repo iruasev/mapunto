@@ -15,7 +15,7 @@ class TipoDocumento
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -34,8 +34,6 @@ class TipoDocumento
      * @ORM\Column(name="description", type="string", length=250, nullable=true)
      */
     private $description;
-
-
 
     /**
      * Get id

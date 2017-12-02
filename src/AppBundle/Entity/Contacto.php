@@ -6,18 +6,22 @@ use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * EventoDocumento
+ * Contacto
  *
  * @ORM\Table(
- *     name="evento_documento",
+ *     name="contacto",
+ *     uniqueConstraints={
+ *      @ORM\UniqueConstraint(name="usuario_id_UNIQUE", columns={"usuario_id"}),
+ *      @ORM\UniqueConstraint(name="friend_id_UNIQUE", columns={"friend_id"})
+ *     },
  *     indexes={
- *      @ORM\Index(name="DE_EVENTO_IDX", columns={"evento_id"}),
- *      @ORM\Index(name="DE_DOCUMENTO_IDX", columns={"documento_id"})
+ *      @ORM\Index(name="USUARIO_IDX", columns={"usuario_id"}),
+ *      @ORM\Index(name="FRIEND_IDX", columns={"friend_id"})
  *     }
  * )
  * @ORM\Entity
  */
-class EventoDocumento
+class Contacto
 {
     /**
      * @var integer
@@ -36,24 +40,24 @@ class EventoDocumento
     private $createdAt;
 
     /**
-     * @var Documento
+     * @var Usuario
      *
-     * @ORM\ManyToOne(targetEntity="Documento")
+     * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="documento_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="friend_id", referencedColumnName="id")
      * })
      */
-    private $documento;
+    private $friend;
 
     /**
-     * @var Evento
+     * @var Usuario
      *
-     * @ORM\ManyToOne(targetEntity="Evento")
+     * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="evento_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
      */
-    private $evento;
+    private $usuario;
 
     /**
      * Get id
@@ -70,7 +74,7 @@ class EventoDocumento
      *
      * @param DateTime $createdAt
      *
-     * @return EventoDocumento
+     * @return Contacto
      */
     public function setCreatedAt($createdAt)
     {
@@ -90,50 +94,50 @@ class EventoDocumento
     }
 
     /**
-     * Set documento
+     * Set friend
      *
-     * @param Documento $documento
+     * @param Usuario $friend
      *
-     * @return EventoDocumento
+     * @return Contacto
      */
-    public function setDocumento(Documento $documento = null)
+    public function setFriend(Usuario $friend = null)
     {
-        $this->documento = $documento;
+        $this->friend = $friend;
 
         return $this;
     }
 
     /**
-     * Get documento
+     * Get friend
      *
-     * @return Documento
+     * @return Usuario
      */
-    public function getDocumento()
+    public function getFriend()
     {
-        return $this->documento;
+        return $this->friend;
     }
 
     /**
-     * Set evento
+     * Set usuario
      *
-     * @param Evento $evento
+     * @param Usuario $usuario
      *
-     * @return EventoDocumento
+     * @return Contacto
      */
-    public function setEvento(Evento $evento = null)
+    public function setUsuario(Usuario $usuario = null)
     {
-        $this->evento = $evento;
+        $this->usuario = $usuario;
 
         return $this;
     }
 
     /**
-     * Get evento
+     * Get usuario
      *
-     * @return Evento
+     * @return Usuario
      */
-    public function getEvento()
+    public function getUsuario()
     {
-        return $this->evento;
+        return $this->usuario;
     }
 }

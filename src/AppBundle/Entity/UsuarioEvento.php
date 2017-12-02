@@ -2,12 +2,19 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * UsuarioEvento
  *
- * @ORM\Table(name="usuario_evento", indexes={@ORM\Index(name="UE_USUARIO_IDX", columns={"usuario_id"}), @ORM\Index(name="UE_EVENTO_IDX", columns={"evento_id"})})
+ * @ORM\Table(
+ *     name="usuario_evento",
+ *     indexes={
+ *      @ORM\Index(name="UE_USUARIO_IDX", columns={"usuario_id"}),
+ *      @ORM\Index(name="UE_EVENTO_IDX", columns={"evento_id"})
+ *     }
+ * )
  * @ORM\Entity
  */
 class UsuarioEvento
@@ -15,7 +22,7 @@ class UsuarioEvento
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -43,9 +50,9 @@ class UsuarioEvento
     private $declined = 'no';
 
     /**
-     * @var \AppBundle\Entity\Evento
+     * @var Evento
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Evento")
+     * @ORM\ManyToOne(targetEntity="Evento")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="evento_id", referencedColumnName="id")
      * })
@@ -53,16 +60,14 @@ class UsuarioEvento
     private $evento;
 
     /**
-     * @var \AppBundle\Entity\Usuario
+     * @var Usuario
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
+     * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
      */
     private $usuario;
-
-
 
     /**
      * Get id
@@ -77,7 +82,7 @@ class UsuarioEvento
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param DateTime $createdAt
      *
      * @return UsuarioEvento
      */
@@ -91,7 +96,7 @@ class UsuarioEvento
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getCreatedAt()
     {
@@ -149,11 +154,11 @@ class UsuarioEvento
     /**
      * Set evento
      *
-     * @param \AppBundle\Entity\Evento $evento
+     * @param Evento $evento
      *
      * @return UsuarioEvento
      */
-    public function setEvento(\AppBundle\Entity\Evento $evento = null)
+    public function setEvento(Evento $evento = null)
     {
         $this->evento = $evento;
 
@@ -163,7 +168,7 @@ class UsuarioEvento
     /**
      * Get evento
      *
-     * @return \AppBundle\Entity\Evento
+     * @return Evento
      */
     public function getEvento()
     {
@@ -173,11 +178,11 @@ class UsuarioEvento
     /**
      * Set usuario
      *
-     * @param \AppBundle\Entity\Usuario $usuario
+     * @param Usuario $usuario
      *
      * @return UsuarioEvento
      */
-    public function setUsuario(\AppBundle\Entity\Usuario $usuario = null)
+    public function setUsuario(Usuario $usuario = null)
     {
         $this->usuario = $usuario;
 
@@ -187,7 +192,7 @@ class UsuarioEvento
     /**
      * Get usuario
      *
-     * @return \AppBundle\Entity\Usuario
+     * @return Usuario
      */
     public function getUsuario()
     {

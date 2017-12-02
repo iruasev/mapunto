@@ -2,12 +2,16 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Evento
  *
- * @ORM\Table(name="evento", indexes={@ORM\Index(name="EVENTO_LUGAR_IDX", columns={"lugar_id"})})
+ * @ORM\Table(
+ *     name="evento",
+ *     indexes={@ORM\Index(name="EVENTO_LUGAR_IDX", columns={"lugar_id"})}
+ * )
  * @ORM\Entity
  */
 class Evento
@@ -15,7 +19,7 @@ class Evento
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -36,21 +40,21 @@ class Evento
     private $capacity;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="event_date", type="datetime", nullable=false)
      */
     private $eventDate;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="deadline", type="datetime", nullable=false)
      */
@@ -71,16 +75,14 @@ class Evento
     private $description;
 
     /**
-     * @var \AppBundle\Entity\Lugar
+     * @var Lugar
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
+     * @ORM\ManyToOne(targetEntity="Lugar")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="lugar_id", referencedColumnName="id")
      * })
      */
     private $lugar;
-
-
 
     /**
      * Get id
@@ -143,7 +145,7 @@ class Evento
     /**
      * Set eventDate
      *
-     * @param \DateTime $eventDate
+     * @param\DateTime $eventDate
      *
      * @return Evento
      */
@@ -157,7 +159,7 @@ class Evento
     /**
      * Get eventDate
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getEventDate()
     {
@@ -167,7 +169,7 @@ class Evento
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param DateTime $createdAt
      *
      * @return Evento
      */
@@ -181,7 +183,7 @@ class Evento
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getCreatedAt()
     {
@@ -191,7 +193,7 @@ class Evento
     /**
      * Set deadline
      *
-     * @param \DateTime $deadline
+     * @param DateTime $deadline
      *
      * @return Evento
      */
@@ -205,7 +207,7 @@ class Evento
     /**
      * Get deadline
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getDeadline()
     {
@@ -263,11 +265,11 @@ class Evento
     /**
      * Set lugar
      *
-     * @param \AppBundle\Entity\Lugar $lugar
+     * @param Lugar $lugar
      *
      * @return Evento
      */
-    public function setLugar(\AppBundle\Entity\Lugar $lugar = null)
+    public function setLugar(Lugar $lugar = null)
     {
         $this->lugar = $lugar;
 
@@ -277,7 +279,7 @@ class Evento
     /**
      * Get lugar
      *
-     * @return \AppBundle\Entity\Lugar
+     * @return Lugar
      */
     public function getLugar()
     {

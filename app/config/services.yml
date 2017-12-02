@@ -33,3 +33,7 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    jwt_token_authenticator:
+        class: AppBundle\Security\JwtTokenAuthenticator
+        autowire: true # instead of adding an arguments, here's your permission to be lazy!

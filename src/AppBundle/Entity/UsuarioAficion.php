@@ -2,12 +2,19 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * UsuarioAficion
  *
- * @ORM\Table(name="usuario_aficion", indexes={@ORM\Index(name="USUARIO_IDX", columns={"usuario_id"}), @ORM\Index(name="USUARIO_AFICION_IDX", columns={"aficion_id"})})
+ * @ORM\Table(
+ *     name="usuario_aficion",
+ *     indexes={
+ *      @ORM\Index(name="USUARIO_IDX", columns={"usuario_id"}),
+ *      @ORM\Index(name="USUARIO_AFICION_IDX", columns={"aficion_id"})
+ *     }
+ * )
  * @ORM\Entity
  */
 class UsuarioAficion
@@ -15,14 +22,14 @@ class UsuarioAficion
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="created_at", type="date", nullable=false)
      */
@@ -36,9 +43,9 @@ class UsuarioAficion
     private $level;
 
     /**
-     * @var \AppBundle\Entity\Aficion
+     * @var Aficion
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Aficion")
+     * @ORM\ManyToOne(targetEntity="Aficion")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="aficion_id", referencedColumnName="id")
      * })
@@ -46,16 +53,14 @@ class UsuarioAficion
     private $aficion;
 
     /**
-     * @var \AppBundle\Entity\Usuario
+     * @var Usuario
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
+     * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
      */
     private $usuario;
-
-
 
     /**
      * Get id
@@ -70,7 +75,7 @@ class UsuarioAficion
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param DateTime $createdAt
      *
      * @return UsuarioAficion
      */
@@ -84,7 +89,7 @@ class UsuarioAficion
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getCreatedAt()
     {
@@ -118,11 +123,11 @@ class UsuarioAficion
     /**
      * Set aficion
      *
-     * @param \AppBundle\Entity\Aficion $aficion
+     * @param Aficion $aficion
      *
      * @return UsuarioAficion
      */
-    public function setAficion(\AppBundle\Entity\Aficion $aficion = null)
+    public function setAficion(Aficion $aficion = null)
     {
         $this->aficion = $aficion;
 
@@ -132,7 +137,7 @@ class UsuarioAficion
     /**
      * Get aficion
      *
-     * @return \AppBundle\Entity\Aficion
+     * @return Aficion
      */
     public function getAficion()
     {
@@ -142,11 +147,11 @@ class UsuarioAficion
     /**
      * Set usuario
      *
-     * @param \AppBundle\Entity\Usuario $usuario
+     * @param Usuario $usuario
      *
      * @return UsuarioAficion
      */
-    public function setUsuario(\AppBundle\Entity\Usuario $usuario = null)
+    public function setUsuario(Usuario $usuario = null)
     {
         $this->usuario = $usuario;
 
@@ -156,7 +161,7 @@ class UsuarioAficion
     /**
      * Get usuario
      *
-     * @return \AppBundle\Entity\Usuario
+     * @return Usuario
      */
     public function getUsuario()
     {

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,7 +16,7 @@ class CategoriaAficion
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -29,9 +30,9 @@ class CategoriaAficion
     private $createdAt;
 
     /**
-     * @var \AppBundle\Entity\Aficion
+     * @var Aficion
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Aficion")
+     * @ORM\ManyToOne(targetEntity="Aficion")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="aficion_id", referencedColumnName="id")
      * })
@@ -39,16 +40,14 @@ class CategoriaAficion
     private $aficion;
 
     /**
-     * @var \AppBundle\Entity\Categoria
+     * @var Categoria
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categoria")
+     * @ORM\ManyToOne(targetEntity="Categoria")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="categoria_id", referencedColumnName="id")
      * })
      */
     private $categoria;
-
-
 
     /**
      * Get id
@@ -63,7 +62,7 @@ class CategoriaAficion
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param DateTime $createdAt
      *
      * @return CategoriaAficion
      */
@@ -77,7 +76,7 @@ class CategoriaAficion
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getCreatedAt()
     {
@@ -87,11 +86,11 @@ class CategoriaAficion
     /**
      * Set aficion
      *
-     * @param \AppBundle\Entity\Aficion $aficion
+     * @param Aficion $aficion
      *
      * @return CategoriaAficion
      */
-    public function setAficion(\AppBundle\Entity\Aficion $aficion = null)
+    public function setAficion(Aficion $aficion = null)
     {
         $this->aficion = $aficion;
 
@@ -101,7 +100,7 @@ class CategoriaAficion
     /**
      * Get aficion
      *
-     * @return \AppBundle\Entity\Aficion
+     * @return Aficion
      */
     public function getAficion()
     {
@@ -111,11 +110,11 @@ class CategoriaAficion
     /**
      * Set categoria
      *
-     * @param \AppBundle\Entity\Categoria $categoria
+     * @param Categoria $categoria
      *
      * @return CategoriaAficion
      */
-    public function setCategoria(\AppBundle\Entity\Categoria $categoria = null)
+    public function setCategoria(Categoria $categoria = null)
     {
         $this->categoria = $categoria;
 
@@ -125,7 +124,7 @@ class CategoriaAficion
     /**
      * Get categoria
      *
-     * @return \AppBundle\Entity\Categoria
+     * @return Categoria
      */
     public function getCategoria()
     {

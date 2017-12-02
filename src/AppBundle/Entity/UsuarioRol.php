@@ -2,12 +2,19 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * UsuarioRol
  *
- * @ORM\Table(name="usuario_rol", indexes={@ORM\Index(name="UR_USUARIO_IDX", columns={"usuario_id"}), @ORM\Index(name="UR_ROL_IDX", columns={"rol_id"})})
+ * @ORM\Table(
+ *     name="usuario_rol",
+ *     indexes={
+ *      @ORM\Index(name="UR_USUARIO_IDX", columns={"usuario_id"}),
+ *      @ORM\Index(name="UR_ROL_IDX", columns={"rol_id"})
+ *     }
+ * )
  * @ORM\Entity
  */
 class UsuarioRol
@@ -15,7 +22,7 @@ class UsuarioRol
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -29,9 +36,9 @@ class UsuarioRol
     private $createdAt;
 
     /**
-     * @var \AppBundle\Entity\Rol
+     * @var Rol
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Rol")
+     * @ORM\ManyToOne(targetEntity="Rol")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="rol_id", referencedColumnName="id")
      * })
@@ -39,16 +46,14 @@ class UsuarioRol
     private $rol;
 
     /**
-     * @var \AppBundle\Entity\Usuario
+     * @var Usuario
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
+     * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
      */
     private $usuario;
-
-
 
     /**
      * Get id
@@ -63,7 +68,7 @@ class UsuarioRol
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param DateTime $createdAt
      *
      * @return UsuarioRol
      */
@@ -77,7 +82,7 @@ class UsuarioRol
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getCreatedAt()
     {
@@ -87,11 +92,11 @@ class UsuarioRol
     /**
      * Set rol
      *
-     * @param \AppBundle\Entity\Rol $rol
+     * @param Rol $rol
      *
      * @return UsuarioRol
      */
-    public function setRol(\AppBundle\Entity\Rol $rol = null)
+    public function setRol(Rol $rol = null)
     {
         $this->rol = $rol;
 
@@ -101,7 +106,7 @@ class UsuarioRol
     /**
      * Get rol
      *
-     * @return \AppBundle\Entity\Rol
+     * @return Rol
      */
     public function getRol()
     {
@@ -111,11 +116,11 @@ class UsuarioRol
     /**
      * Set usuario
      *
-     * @param \AppBundle\Entity\Usuario $usuario
+     * @param Usuario $usuario
      *
      * @return UsuarioRol
      */
-    public function setUsuario(\AppBundle\Entity\Usuario $usuario = null)
+    public function setUsuario(Usuario $usuario = null)
     {
         $this->usuario = $usuario;
 
@@ -125,7 +130,7 @@ class UsuarioRol
     /**
      * Get usuario
      *
-     * @return \AppBundle\Entity\Usuario
+     * @return Usuario
      */
     public function getUsuario()
     {

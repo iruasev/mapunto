@@ -7,7 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * TipoLugar
  *
- * @ORM\Table(name="tipo_lugar", uniqueConstraints={@ORM\UniqueConstraint(name="LUGAR_NAME_UNIQUE", columns={"name"})})
+ * @ORM\Table(
+ *     name="tipo_lugar",
+ *     uniqueConstraints={@ORM\UniqueConstraint(name="LUGAR_NAME_UNIQUE", columns={"name"})}
+ * )
  * @ORM\Entity
  */
 class TipoLugar
@@ -15,7 +18,7 @@ class TipoLugar
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -27,8 +30,6 @@ class TipoLugar
      * @ORM\Column(name="name", type="string", length=100, nullable=false)
      */
     private $name;
-
-
 
     /**
      * Get id

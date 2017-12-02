@@ -15,7 +15,7 @@ class Pais
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -34,8 +34,6 @@ class Pais
      * @ORM\Column(name="name", type="string", length=100, nullable=false)
      */
     private $name;
-
-
 
     /**
      * Get id

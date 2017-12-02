@@ -2,12 +2,19 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * EventoCategoria
  *
- * @ORM\Table(name="evento_categoria", indexes={@ORM\Index(name="EC_EVENTO_IDX", columns={"evento_id"}), @ORM\Index(name="EC_CATEGORIA_IDX", columns={"categoria_id"})})
+ * @ORM\Table(
+ *     name="evento_categoria",
+ *     indexes={
+ *      @ORM\Index(name="EC_EVENTO_IDX", columns={"evento_id"}),
+ *      @ORM\Index(name="EC_CATEGORIA_IDX", columns={"categoria_id"})
+ *     }
+ * )
  * @ORM\Entity
  */
 class EventoCategoria
@@ -15,7 +22,7 @@ class EventoCategoria
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -29,9 +36,9 @@ class EventoCategoria
     private $createdAt;
 
     /**
-     * @var \AppBundle\Entity\Categoria
+     * @var Categoria
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categoria")
+     * @ORM\ManyToOne(targetEntity="Categoria")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="categoria_id", referencedColumnName="id")
      * })
@@ -39,16 +46,14 @@ class EventoCategoria
     private $categoria;
 
     /**
-     * @var \AppBundle\Entity\Evento
+     * @var Evento
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Evento")
+     * @ORM\ManyToOne(targetEntity="Evento")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="evento_id", referencedColumnName="id")
      * })
      */
     private $evento;
-
-
 
     /**
      * Get id
@@ -63,7 +68,7 @@ class EventoCategoria
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param DateTime $createdAt
      *
      * @return EventoCategoria
      */
@@ -77,7 +82,7 @@ class EventoCategoria
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getCreatedAt()
     {
@@ -87,11 +92,11 @@ class EventoCategoria
     /**
      * Set categoria
      *
-     * @param \AppBundle\Entity\Categoria $categoria
+     * @param Categoria $categoria
      *
      * @return EventoCategoria
      */
-    public function setCategoria(\AppBundle\Entity\Categoria $categoria = null)
+    public function setCategoria(Categoria $categoria = null)
     {
         $this->categoria = $categoria;
 
@@ -101,7 +106,7 @@ class EventoCategoria
     /**
      * Get categoria
      *
-     * @return \AppBundle\Entity\Categoria
+     * @return Categoria
      */
     public function getCategoria()
     {
@@ -111,11 +116,11 @@ class EventoCategoria
     /**
      * Set evento
      *
-     * @param \AppBundle\Entity\Evento $evento
+     * @param Evento $evento
      *
      * @return EventoCategoria
      */
-    public function setEvento(\AppBundle\Entity\Evento $evento = null)
+    public function setEvento(Evento $evento = null)
     {
         $this->evento = $evento;
 
@@ -125,7 +130,7 @@ class EventoCategoria
     /**
      * Get evento
      *
-     * @return \AppBundle\Entity\Evento
+     * @return Evento
      */
     public function getEvento()
     {

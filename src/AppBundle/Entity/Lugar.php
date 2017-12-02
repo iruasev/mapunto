@@ -7,7 +7,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Lugar
  *
- * @ORM\Table(name="lugar", indexes={@ORM\Index(name="FK_TIPO_LUGAR_IDX", columns={"tipo_lugar_id"}), @ORM\Index(name="FK_LUGAR_PAIS_IDX", columns={"pais_id"})})
+ * @ORM\Table(
+ *     name="lugar",
+ *     indexes={
+ *      @ORM\Index(name="FK_TIPO_LUGAR_IDX", columns={"tipo_lugar_id"}),
+ *      @ORM\Index(name="FK_LUGAR_PAIS_IDX", columns={"pais_id"})
+ *     }
+ * )
  * @ORM\Entity
  */
 class Lugar
@@ -15,7 +21,7 @@ class Lugar
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -57,9 +63,9 @@ class Lugar
     private $longitude;
 
     /**
-     * @var \AppBundle\Entity\TipoLugar
+     * @var TipoLugar
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TipoLugar")
+     * @ORM\ManyToOne(targetEntity="TipoLugar")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="tipo_lugar_id", referencedColumnName="id")
      * })
@@ -67,9 +73,9 @@ class Lugar
     private $tipoLugar;
 
     /**
-     * @var \AppBundle\Entity\Pais
+     * @var Pais
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pais")
+     * @ORM\ManyToOne(targetEntity="Pais")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="pais_id", referencedColumnName="id")
      * })
@@ -211,11 +217,11 @@ class Lugar
     /**
      * Set tipoLugar
      *
-     * @param \AppBundle\Entity\TipoLugar $tipoLugar
+     * @param TipoLugar $tipoLugar
      *
      * @return Lugar
      */
-    public function setTipoLugar(\AppBundle\Entity\TipoLugar $tipoLugar = null)
+    public function setTipoLugar(TipoLugar $tipoLugar = null)
     {
         $this->tipoLugar = $tipoLugar;
 
@@ -225,7 +231,7 @@ class Lugar
     /**
      * Get tipoLugar
      *
-     * @return \AppBundle\Entity\TipoLugar
+     * @return TipoLugar
      */
     public function getTipoLugar()
     {
@@ -235,11 +241,11 @@ class Lugar
     /**
      * Set pais
      *
-     * @param \AppBundle\Entity\Pais $pais
+     * @param Pais $pais
      *
      * @return Lugar
      */
-    public function setPais(\AppBundle\Entity\Pais $pais = null)
+    public function setPais(Pais $pais = null)
     {
         $this->pais = $pais;
 
@@ -249,7 +255,7 @@ class Lugar
     /**
      * Get pais
      *
-     * @return \AppBundle\Entity\Pais
+     * @return Pais
      */
     public function getPais()
     {

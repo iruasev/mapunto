@@ -105,7 +105,19 @@ jms_serializer:
                 namespace_prefix: 'FOS\UserBundle'
                 path: %kernel.root_dir%/Resources/serializer/FOSUB
 
+# EasyAdminBundle configuration
 easy_admin:
+    site_name: 'Mapunto' # Can be a logo or whatever
     entities:
         - AppBundle\Entity\Rol
         - AppBundle\Entity\Usuario
+    design:
+        brand_color: '#009933'
+        color_scheme: 'light'
+
+# JWT Authentication configuration
+lexik_jwt_authentication:
+    private_key_path: '%jwt_private_key_path%'
+    public_key_path:  '%jwt_public_key_path%'
+    pass_phrase:      '%jwt_key_pass_phrase%'
+    token_ttl:        '%jwt_token_ttl%'

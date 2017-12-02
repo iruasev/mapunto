@@ -2,12 +2,19 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Documento
  *
- * @ORM\Table(name="documento", indexes={@ORM\Index(name="TIPO_DOCUMENTO_IDX", columns={"tipo_documento_id"}), @ORM\Index(name="DOCUMENTO_USUARIO_IDX", columns={"usuario_id"})})
+ * @ORM\Table(
+ *     name="documento",
+ *     indexes={
+ *      @ORM\Index(name="TIPO_DOCUMENTO_IDX", columns={"tipo_documento_id"}),
+ *      @ORM\Index(name="DOCUMENTO_USUARIO_IDX", columns={"usuario_id"})
+ *      }
+ * )
  * @ORM\Entity
  */
 class Documento
@@ -15,7 +22,7 @@ class Documento
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -36,7 +43,7 @@ class Documento
     private $path;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="created_at", type="date", nullable=false)
      */
@@ -50,9 +57,9 @@ class Documento
     private $description;
 
     /**
-     * @var \AppBundle\Entity\TipoDocumento
+     * @var TipoDocumento
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TipoDocumento")
+     * @ORM\ManyToOne(targetEntity="TipoDocumento")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="tipo_documento_id", referencedColumnName="id")
      * })
@@ -60,16 +67,14 @@ class Documento
     private $tipoDocumento;
 
     /**
-     * @var \AppBundle\Entity\Usuario
+     * @var Usuario
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario")
+     * @ORM\ManyToOne(targetEntity="Usuario")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * })
      */
     private $usuario;
-
-
 
     /**
      * Get id
@@ -132,7 +137,7 @@ class Documento
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param DateTime $createdAt
      *
      * @return Documento
      */
@@ -146,7 +151,7 @@ class Documento
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getCreatedAt()
     {
@@ -180,11 +185,11 @@ class Documento
     /**
      * Set tipoDocumento
      *
-     * @param \AppBundle\Entity\TipoDocumento $tipoDocumento
+     * @paramTipoDocumento $tipoDocumento
      *
      * @return Documento
      */
-    public function setTipoDocumento(\AppBundle\Entity\TipoDocumento $tipoDocumento = null)
+    public function setTipoDocumento(TipoDocumento $tipoDocumento = null)
     {
         $this->tipoDocumento = $tipoDocumento;
 
@@ -194,7 +199,7 @@ class Documento
     /**
      * Get tipoDocumento
      *
-     * @return \AppBundle\Entity\TipoDocumento
+     * @return TipoDocumento
      */
     public function getTipoDocumento()
     {
@@ -204,11 +209,11 @@ class Documento
     /**
      * Set usuario
      *
-     * @param \AppBundle\Entity\Usuario $usuario
+     * @param Usuario $usuario
      *
      * @return Documento
      */
-    public function setUsuario(\AppBundle\Entity\Usuario $usuario = null)
+    public function setUsuario(Usuario $usuario = null)
     {
         $this->usuario = $usuario;
 
@@ -218,7 +223,7 @@ class Documento
     /**
      * Get usuario
      *
-     * @return \AppBundle\Entity\Usuario
+     * @return Usuario
      */
     public function getUsuario()
     {

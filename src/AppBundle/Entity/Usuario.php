@@ -2,10 +2,9 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 /**
  * Usuario
@@ -18,11 +17,21 @@ use Doctrine\Common\Collections\Collection;
  *      @ORM\UniqueConstraint(name="USERNAME_UNIQ", columns={"username"}),
  *      @ORM\UniqueConstraint(name="EMAIL_UNIQ", columns={"email"}),
  *      @ORM\UniqueConstraint(name="CONF_TOKEN_UNIQ", columns={"confirmation_token"})},
- *     indexes={@ORM\Index(name="USUARIO_LUGAR_IDX", columns={"lugar_id"})})
+ *     indexes={@ORM\Index(name="USUARIO_LUGAR_IDX", columns={"lugar_id"})
+ *     }
+ * )
  * @ORM\Entity
  */
 class Usuario extends User
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
 
     /**
      * @var integer
@@ -32,7 +41,7 @@ class Usuario extends User
     private $age;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="birth_date", type="date", nullable=false)
      */
@@ -55,21 +64,21 @@ class Usuario extends User
     /**
      * @var string
      *
-     * @ORM\Column(name="surname", type="string", length=100, nullable=true)
-     */
-    private $surname;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="phone", type="string", length=20, nullable=true)
      */
     private $phone;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="surname", type="string", length=100, nullable=true)
+     */
+    private $surname;
+
+    /**
      * @var Lugar
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Lugar")
+     * @ORM\ManyToOne(targetEntity="Lugar")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="lugar_id", referencedColumnName="id")
      * })
@@ -77,20 +86,13 @@ class Usuario extends User
     private $lugar;
 
     /**
-     * @var Collection
+     * Get id
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Usuario", mappedBy="friend")
+     * @return integer
      */
-    private $usuario;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
+    public function getId()
     {
-        parent::__construct();
-
-        $this->usuario = new ArrayCollection();
+        return $this->id;
     }
 
     /**
@@ -120,7 +122,7 @@ class Usuario extends User
     /**
      * Set birthDate
      *
-     * @param \DateTime $birthDate
+     * @param DateTime $birthDate
      *
      * @return Usuario
      */
@@ -134,7 +136,7 @@ class Usuario extends User
     /**
      * Get birthDate
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getBirthDate()
     {
@@ -259,39 +261,5 @@ class Usuario extends User
     public function getLugar()
     {
         return $this->lugar;
-    }
-
-    /**
-     * Add usuario
-     *
-     * @param Usuario $usuario
-     *
-     * @return Usuario
-     */
-    public function addUsuario(Usuario $usuario)
-    {
-        $this->usuario[] = $usuario;
-
-        return $this;
-    }
-
-    /**
-     * Remove usuario
-     *
-     * @param Usuario $usuario
-     */
-    public function removeUsuario(Usuario $usuario)
-    {
-        $this->usuario->removeElement($usuario);
-    }
-
-    /**
-     * Get usuario
-     *
-     * @return Collection
-     */
-    public function getUsuario()
-    {
-        return $this->usuario;
     }
 }

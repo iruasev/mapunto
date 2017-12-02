@@ -9,9 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(
  *     name="aficion",
- *     uniqueConstraints={@ORM\UniqueConstraint(name="AFICION_NAME_UNIQ", columns={"name"})},
+ *     uniqueConstraints={
+ *      @ORM\UniqueConstraint(name="AFICION_NAME_UNIQ", columns={"name"})},
  *     indexes={@ORM\Index(name="AFICION_CATEGORIA_IDX", columns={"categoria_id"})}
- *     )
+ * )
  * @ORM\Entity
  */
 class Aficion
@@ -19,7 +20,7 @@ class Aficion
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -40,16 +41,14 @@ class Aficion
     private $description;
 
     /**
-     * @var \AppBundle\Entity\Categoria
+     * @var Categoria
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categoria")
+     * @ORM\ManyToOne(targetEntity="Categoria")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="categoria_id", referencedColumnName="id")
      * })
      */
     private $categoria;
-
-
 
     /**
      * Get id
@@ -112,11 +111,11 @@ class Aficion
     /**
      * Set categoria
      *
-     * @param \AppBundle\Entity\Categoria $categoria
+     * @param Categoria $categoria
      *
      * @return Aficion
      */
-    public function setCategoria(\AppBundle\Entity\Categoria $categoria = null)
+    public function setCategoria(Categoria $categoria = null)
     {
         $this->categoria = $categoria;
 
@@ -126,7 +125,7 @@ class Aficion
     /**
      * Get categoria
      *
-     * @return \AppBundle\Entity\Categoria
+     * @return Categoria
      */
     public function getCategoria()
     {

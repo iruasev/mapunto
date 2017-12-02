@@ -7,7 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Comentario
  *
- * @ORM\Table(name="comentario", indexes={@ORM\Index(name="COMENTARIO_EVENTO_IDX", columns={"evento_id"})})
+ * @ORM\Table(
+ *     name="comentario",
+ *     indexes={@ORM\Index(name="COMENTARIO_EVENTO_IDX", columns={"evento_id"})}
+ * )
  * @ORM\Entity
  */
 class Comentario
@@ -15,7 +18,7 @@ class Comentario
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -36,16 +39,14 @@ class Comentario
     private $description;
 
     /**
-     * @var \AppBundle\Entity\Evento
+     * @var Evento
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Evento")
+     * @ORM\ManyToOne(targetEntity="Evento")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="evento_id", referencedColumnName="id")
      * })
      */
     private $evento;
-
-
 
     /**
      * Get id
@@ -108,11 +109,11 @@ class Comentario
     /**
      * Set evento
      *
-     * @param \AppBundle\Entity\Evento $evento
+     * @param Evento $evento
      *
      * @return Comentario
      */
-    public function setEvento(\AppBundle\Entity\Evento $evento = null)
+    public function setEvento(Evento $evento = null)
     {
         $this->evento = $evento;
 
@@ -122,7 +123,7 @@ class Comentario
     /**
      * Get evento
      *
-     * @return \AppBundle\Entity\Evento
+     * @return Evento
      */
     public function getEvento()
     {
