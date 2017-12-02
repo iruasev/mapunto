@@ -84,9 +84,9 @@ fos_rest:
     routing_loader:
         default_format: json
         include_format: false
-    exception:
-        enabled: true
-        exception_controller: 'BCA\CoreBundle\Controller\IMSExceptionController::showAction'
+#    exception:
+#        enabled: true
+#        exception_controller: 'BCA\CoreBundle\Controller\IMSExceptionController::showAction'
 
 # FOSUserBundle configuration
 fos_user:
@@ -104,3 +104,8 @@ jms_serializer:
             FOSUB:
                 namespace_prefix: 'FOS\UserBundle'
                 path: %kernel.root_dir%/Resources/serializer/FOSUB
+
+easy_admin:
+    entities:
+        - AppBundle\Entity\Rol
+        - AppBundle\Entity\Usuario

@@ -21,18 +21,17 @@ security:
             pattern: ^/
             stateless: true
             anonymous: true
-            form_login:
-                provider: fos_userbundle
-                login_path: login
-                check_path: login
-                csrf_token_generator: security.csrf.token_manager
-                # if you are using Symfony < 2.8, use the following config instead:
-                # csrf_provider: form.csrf_provider
+#            form_login:
+#                provider: fos_userbundle
+#                login_path: login
+#                check_path: login
+#                csrf_token_generator: security.csrf.token_manager
+#                # if you are using Symfony < 2.8, use the following config instead:
+#                # csrf_provider: form.csrf_provider
             logout:       true
-            anonymous:    true
 
-    access_control:
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/reset, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api, roles: ROLE_USER }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+#    access_control:
+#        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/reset, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/api, roles: ROLE_USER }
+#        - { path: ^/admin/, role: ROLE_ADMIN }
