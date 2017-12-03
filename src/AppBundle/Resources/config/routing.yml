@@ -1,0 +1,27 @@
+login:
+    type: rest
+    resource: "@AppBundle/Controller/LoginController.php"
+
+evento:
+    type: rest
+    resource: "@AppBundle/Controller/EventosController.php"
+
+lugar:
+    type: rest
+    resource: "@AppBundle/Controller/LugaresController.php"
+
+usuario:
+    type: rest
+    resource: "@AppBundle/Controller/UsuariosController.php"
+
+rol:
+    type: rest
+    resource: "@AppBundle/Controller/RolesController.php"
+
+aficion:
+    type: rest
+    resource: "@AppBundle/Controller/AficionesController.php"
+
+comentario:
+    type: rest
+    resource: "@AppBundle/Controller/ComentariosController.php"

@@ -9,12 +9,12 @@ use Symfony\Component\HttpFoundation\{
     Request, Response
 };
 
-class JWTLoginController extends FOSRestController
+class LoginController extends FOSRestController
 {
     /**
      * @Post("/login")
      */
-    public function postLoginAction(Request $request)
+    public function postLoginAction (Request $request)
     {
         $requestParam = json_decode($request->getContent());
 
@@ -23,18 +23,17 @@ class JWTLoginController extends FOSRestController
         if (isset($requestParam->username) && isset($requestParam->password)) {
             // Get the user
             $userRepo = $this->getDoctrine()->getRepository(Usuario::class);
-            $user     = $userRepo->findOneBy(['username' => $requestParam->username, 'password' =>
-                $requestParam->password]);
+            $user     = $userRepo->findOneBy([
+                                                 'username' => $requestParam->username,
+                                                 'password' => $requestParam->password,
+                                             ]);
         }
 
-        if (! $user) {
-            return $this->view(
-                [
-                    'error'       => 'User not found for credentials given.',
-                    'status-code' => Response::HTTP_UNAUTHORIZED
-                ],
-                Response::HTTP_UNAUTHORIZED
-            );
+        if (!$user) {
+            return $this->view([
+                                   'error'       => 'User not found for credentials given.',
+                                   'status-code' => Response::HTTP_UNAUTHORIZED,
+                               ], Response::HTTP_UNAUTHORIZED);
         }
 
         $jwt = $this->container->get('lexik_jwt_authentication.jwt_manager')->create($user);

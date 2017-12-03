@@ -145,7 +145,7 @@ class Evento
     /**
      * Set eventDate
      *
-     * @param\DateTime $eventDate
+     * @param DateTime $eventDate
      *
      * @return Evento
      */
