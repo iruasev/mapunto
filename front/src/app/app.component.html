@@ -1,51 +1,58 @@
 <header id="header">
     <div class="navbar navbar-default">
         <div class="navbar-header">
-            <!-- Boton de desplegar menu responsive -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-extended="false">
+            <!-- Burguer menu for responsive layouts -->
+            <button
+                    type="button"
+                    class="navbar-toggle collapsed"
+                    data-toggle="collapse"
+                    data-target="#menu"
+                    aria-expanded="false">
                 <span class="sr-only">Toggle</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
 
-            <!-- LOGO -->
-            <a class="navbar-brand" [routerLink]="['/']">
-                <img src="../assets/img/mapunto-icon.png" id="logo" height="35"/>
+            <!-- Logo -->
+            <a class="navbar-brand" routerLink="['/']">
+                <img src="../assets/img/mapunto-icon.png" id="logo"/>
             </a>
         </div>
 
+        <!-- Menu -->
         <div class="collapse navbar-collapse" id="menu">
             <ul class="nav navbar-nav">
                 <li>
-                    <a [routerLink]="['/']">
+                    <a routerLink="['/']">
                         <span class="glyphicon glyphicon-home"></span>
                         Home
                     </a>
                 </li>
                 <li>
-                    <a [routerLink]="['/']">
+                    <a routerLink="['/']">
                         <span class="glyphicon glyphicon-plus"></span>
                         Crear tarea
                     </a>
                 </li>
                 <li>
-                    <a [routerLink]="['/']">
+                    <a routerLink="['/']">
                         <span class="glyphicon glyphicon-cog"></span>
                         Ajustes
                     </a>
                 </li>
                 <li>
-                    <a [routerLink]="['/']">
+                    <a routerLink="['/']">
                         <span class="glyphicon glyphicon-log-out"></span>
                         Salir
                     </a>
                 </li>
             </ul>
 
+            <!-- Right menu -->
             <ul class="nav navbar-nav navbar-right">
-                <li><a [routerLink]="['/login']">Acceder</a></li>
-                <li><a [routerLink]="['/register']">Registro</a></li>
+                <li><a routerLink="['/login']">Acceder</a></li>
+                <li><a routerLink="['/register']">Registro</a></li>
             </ul>
         </div>
     </div>
