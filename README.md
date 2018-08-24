@@ -17,9 +17,7 @@
     
     -[JMSSerializerBundle](https://github.com/schmittjoh/serializer)
     
-    -[EasyAdminBundle](https://github.com/javiereguiluz/EasyAdminBundle)
-    
-* [Angular 4](https://angular.io/) - Front
+* [Angular 6](https://angular.io/) - Front
 
 * [MySQL](https://www.mysql.com/) - Base de datos
 
@@ -30,11 +28,11 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-Usamos [SemVer](http://semver.org/) para el versionado de la aplicación.
+Usamos [SemVer](http://semver.org/) para el versionado de la aplicacion.
 
 ## Author
 
-* **Joaquín Rúa** - *Main* - [iruasev](https://github.com/iruasev)
+* **Joaquin Rua** - *Main* - [iruasev](https://github.com/iruasev)
 
 ## License
 
