@@ -5,19 +5,18 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Usuario;
 use FOS\RestBundle\Controller\Annotations\Post;
 use FOS\RestBundle\Controller\FOSRestController;
-use Symfony\Component\HttpFoundation\{
-    Request, Response
-};
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class LoginController extends FOSRestController
 {
     /**
      * @Post("/login")
      */
-    public function postLoginAction (Request $request)
+    public function postLoginAction(Request $request)
     {
         $requestParam = json_decode($request->getContent());
-
+        
         $user = null;
 
         if (isset($requestParam->username) && isset($requestParam->password)) {
