@@ -40,6 +40,8 @@ abstract class BaseCRUDController extends FOSRestController implements ClassReso
     abstract function getClassName() : string;
 
     /**
+     * By default obtain data filtered by user. Override if behavior is not desired.
+     *
      * @return View
      */
     public function cgetAction () : View

@@ -10,6 +10,7 @@ use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\View\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -19,6 +20,9 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class UsuariosController extends BaseCRUDController
 {
+    /** @override */
+    const DISCRIMINATOR = 'usuario';
+
     /**
      * @Get("/usuarios")
      * @Security("is_granted('ROLE_ADMIN')")
@@ -36,19 +40,24 @@ class UsuariosController extends BaseCRUDController
 
     /**
      * @Get("/usuarios/{id}")
-     * @Security("is_granted('ROLE_ADMIN')")
+     *
+     * Only ROLE_ADMIN and owner are allowed to fetch.
      *
      * {@inheritdoc}
      */
     public function getAction (string $id): View
     {
-        $result = $this->getRepository()->find($id);
+        if($this->getUser()->getId() === intval($id) || $this->isGranted('ROLE_ADMIN')) {
+            $result = $this->getRepository()->find($id);
 
-        if (null === $result) {
-            throw new NotFoundHttpException($this->getObjectName() . ' not found');
+            if (null === $result) {
+                throw new NotFoundHttpException($this->getObjectName() . ' not found');
+            }
+
+            return $this->view($result, Response::HTTP_OK);
+        } else {
+            throw new HttpException(Response::HTTP_UNAUTHORIZED, 'You do not have permission to retrieve the user requested');
         }
-
-        return $this->view($result, Response::HTTP_OK);
     }
 
     /**
